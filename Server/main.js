@@ -110,6 +110,11 @@ app.post("/CreateAccount", function(req, res) {
 
 });
 
+/* Default home page */
+app.get('/', function(req, res){
+  res.send('Server is up.');
+});
+
 
 
 
