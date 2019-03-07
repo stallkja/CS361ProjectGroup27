@@ -1,0 +1,9 @@
+Client/.expo/*
+Client/npm-debug.*
+Client/*.jks
+Client/*.p12
+Client/*.key
+Client/*.mobileprovision
+Server/settings.json
+Server/.vscode/CS361Private.ppk
+**/node_modules

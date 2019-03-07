@@ -1,0 +1,8 @@
+{
+    "files.exclude": {
+        "**/.watchmanconfig": true,
+        "**/.expo": true,
+        "**/node_modules": true,
+        "**/package-lock.json": true
+    }
+}
