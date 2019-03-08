@@ -1,0 +1,16 @@
+{
+  "name": "Tests",
+  "description": "CS 361 Group 27 - Tests",
+  "version": "0.0.1",
+  "repository": "https://github.com/stallkja/CS361ProjectGroup27",
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "scripts": {
+    "test": "node UnitTest.js"
+  },
+  "engines": {
+    "node": ">= 7.6"
+  },
+  "license": "MIT"
+}
