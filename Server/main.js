@@ -6,12 +6,15 @@ const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const mysql = require('mysql');
 const fs = require('fs');
+const path = require('path');
 var settings = JSON.parse(fs.readFileSync('settings.json', 'utf8'));
-
 var pool = mysql.createPool(settings.dbConnection);
 
-//var Emailer = nodemailer.createTransport(settings.nodeMailer);
+var morgan = require('morgan');
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'project.log'), { flags: 'a' });
+app.use(morgan('combined', { stream: accessLogStream }));
 
+//var Emailer = nodemailer.createTransport(settings.nodeMailer);
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -20,8 +23,8 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 app.post("/CreateAccount", function(req, res) {
+    console.log(req.body);
     var toReturn = { "isErrored": false };
     if (req.body != null) {
 
@@ -97,6 +100,10 @@ app.post("/CreateAccount", function(req, res) {
                             });
                         });
                     }
+                    else
+                    {
+                        res.send(JSON.stringify(toReturn));
+                    }
                 }
             })
         } else {
@@ -115,7 +122,41 @@ app.get('/', function(req, res){
   res.send('Server is up.');
 });
 
+/* Username and password authentication */
+app.post('/auth', function(req, res) {
+  console.log(req.body);
+  // error handling for body contains username and password
 
+  pool.query('SELECT * FROM users WHERE username=?', 
+    [req.body.username], 
+    function(err, result, fields){
+      if(err) {
+        console.log('DB query error\n');
+        console.log(err);
+        res.send(JSON.stringify({auth: 'DB Error'}));
+      }
+      if(result.length) {
+        console.log(result);
+
+        bcrypt.compare(req.body.password, result[0].passwordHash, function(berr, bres) {
+            if(berr) {
+                console.log(berr);
+            }
+            if(bres) {
+                res.send(JSON.stringify({auth: 'Valid'}));
+            }
+            else {
+                res.send(JSON.stringify({auth: 'Invalid'}));
+            }
+        });
+      }
+      else {
+        res.send(JSON.stringify({auth: 'Not Found'}));
+      }
+
+  });
+
+});
 
 
 
@@ -129,15 +170,6 @@ app.post("/queryAccounts", function(req, res) {
         }
     })
 });
-
-
-
-
-
-
-
-
-
 
 app.use(function(req, res) {
     res.status(404);
