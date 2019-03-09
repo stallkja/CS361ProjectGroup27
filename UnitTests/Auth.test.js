@@ -1,5 +1,5 @@
 const axios = require('axios');
-const route = "http://157.230.158.143/Auth";
+const route = "http://157.230.158.143/authApp";
 
 console.log("connecting to " + route);
 
