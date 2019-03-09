@@ -7,12 +7,16 @@ const nodemailer = require('nodemailer');
 const mysql = require('mysql');
 const fs = require('fs');
 const path = require('path');
+const jwt = require('jsonwebtoken');
+
 var settings = JSON.parse(fs.readFileSync('settings.json', 'utf8'));
 var pool = mysql.createPool(settings.dbConnection);
 
 var morgan = require('morgan');
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'project.log'), { flags: 'a' });
 app.use(morgan('combined', { stream: accessLogStream }));
+
+const SECRET = 'super-secret-encoding-string';
 
 //var Emailer = nodemailer.createTransport(settings.nodeMailer);
 
@@ -126,6 +130,7 @@ app.get('/', function(req, res){
 /* Logged in page */
 app.get('/home', function(req, res){
   var context = { title: 'Home' }
+  console.log(req);
   res.render('home', context);
 });
 
@@ -134,9 +139,15 @@ app.post('/auth', function(req, res) {
   console.log(req.body);
   // error handling for body contains username and password
 
+  let response = {
+    auth: null,
+    success: false,
+    jwt: null
+  };
+
   if(!req.body.username || !req.body.password) {
-    res.status(500);
-    res.send(JSON.stringify({auth: 'Bad parameters'}));
+    response.auth = 'Bad parameters';
+    res.status(500).json(response);
     return;
   }
 
@@ -146,7 +157,8 @@ app.post('/auth', function(req, res) {
       if(err) {
         console.log('DB query error\n');
         console.log(err);
-        res.send(JSON.stringify({auth: 'DB Error'}));
+        response.auth = 'Server Error';
+        res.status(500).json(response);
         return;
       }
       if(result.length) {
@@ -155,20 +167,25 @@ app.post('/auth', function(req, res) {
         bcrypt.compare(req.body.password, result[0].passwordHash, function(berr, bres) {
             if(berr) {
                 console.log(berr);
+                response.auth = 'Server Error';
+                res.status(500).json(response);
+                return;
             }
             if(bres) {
-              res.status(200);
-              res.send(JSON.stringify({auth: 'Valid'}));
+              response.auth = 'Valid';
+              response.success = true;
+              response.jwt = jwt.sign({username: req.body.username, exp: Date.now() / 1000 + 60 * 60 * 24 * 7}, SECRET);
+              res.status(200).json(response);
             }
             else {
-              res.status(403);
-              res.send(JSON.stringify({auth: 'Invalid'}));
+              response.auth = 'Invalid';
+              res.status(403).json(response);
             }
         });
       }
       else {
-        res.status(403);
-        res.send(JSON.stringify({auth: 'Not Found'}));
+        response.auth = 'Not Found';
+        res.status(403).json(response);
       }
   });
 });
@@ -179,9 +196,15 @@ app.post('/authMarket', function(req, res) {
   console.log(req.body);
   // error handling for body contains username and password
 
+  let response = {
+    auth: null,
+    success: false,
+    jwt: null
+  };
+
   if(!req.body.username || !req.body.password) {
-    res.status(500);
-    res.send(JSON.stringify({auth: 'Bad parameters'}));
+    response.auth = 'Bad parameters';
+    res.status(500).json(response);
     return;
   }
 
@@ -191,7 +214,8 @@ app.post('/authMarket', function(req, res) {
       if(err) {
         console.log('DB query error\n');
         console.log(err);
-        res.send(JSON.stringify({auth: 'DB Error'}));
+        response.auth = 'Server Error';
+        res.status(500).json(response);
         return;
       }
       if(result.length) {
@@ -200,20 +224,25 @@ app.post('/authMarket', function(req, res) {
         bcrypt.compare(req.body.password, result[0].passwordHash, function(berr, bres) {
             if(berr) {
                 console.log(berr);
+                response.auth = 'Server Error';
+                res.status(500).json(response);
+                return;
             }
             if(bres) {
-              res.status(200);
-              res.send(JSON.stringify({auth: 'Valid'}));
+              response.auth = 'Valid';
+              response.success = true;
+              response.jwt = jwt.sign({username: req.body.username, exp: Date.now() / 1000 + 60 * 60 * 24 * 7}, SECRET);
+              res.status(200).json(response);
             }
             else {
-              res.status(403);
-              res.send(JSON.stringify({auth: 'Invalid'}));
+              response.auth = 'Invalid';
+              res.status(403).json(response);
             }
         });
       }
       else {
-        res.status(403);
-        res.send(JSON.stringify({auth: 'Not Found'}));
+        response.auth = 'Not Found';
+        res.status(403).json(response);
       }
   });
 });

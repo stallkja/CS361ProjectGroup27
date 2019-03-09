@@ -1,7 +1,4 @@
-document.getElementById('submitBtn').addEventListener('click', function(event){
-   console.log('inside function');
-   event.preventDefault();
-
+function login(){
    const user = document.getElementById('username').value;
    const pass = document.getElementById('password').value;
 
@@ -11,7 +8,7 @@ document.getElementById('submitBtn').addEventListener('click', function(event){
    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
    req.addEventListener('load',function(){
       if(req.status >= 200 && req.status < 400){
-         console.log("Good");
+         window.sessionStorage.token = JSON.parse(req.response).jwt;
          window.location.href = "/home";
       } else {
          console.log('Error');
@@ -19,6 +16,6 @@ document.getElementById('submitBtn').addEventListener('click', function(event){
    }});
 
    req.send(
-      "username=" + user + "&password=" + pass + "&accountType=users"
+      "username=" + user + "&password=" + pass
    );
-});
+}
