@@ -134,6 +134,12 @@ app.post('/auth', function(req, res) {
   console.log(req.body);
   // error handling for body contains username and password
 
+  if(!req.body.username || !req.body.password) {
+    res.status(500);
+    res.send(JSON.stringify({auth: 'Bad parameters'}));
+    return;
+  }
+
   pool.query('SELECT * FROM users WHERE username=?', 
     [req.body.username], 
     function(err, result, fields){
@@ -168,18 +174,25 @@ app.post('/auth', function(req, res) {
 });
 
 
-/* Username and password authentication for market accounts */
+/* Username and password authentication for market accounts through web app */
 app.post('/authMarket', function(req, res) {
   console.log(req.body);
   // error handling for body contains username and password
 
+  if(!req.body.username || !req.body.password) {
+    res.status(500);
+    res.send(JSON.stringify({auth: 'Bad parameters'}));
+    return;
+  }
+
   pool.query('SELECT * FROM markets WHERE username=?', 
-    [dbTable, req.body.username], 
+    [req.body.username], 
     function(err, result, fields){
       if(err) {
         console.log('DB query error\n');
         console.log(err);
         res.send(JSON.stringify({auth: 'DB Error'}));
+        return;
       }
       if(result.length) {
         console.log(result);
