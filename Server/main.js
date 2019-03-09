@@ -119,16 +119,62 @@ app.post("/CreateAccount", function(req, res) {
 
 /* Default home page */
 app.get('/', function(req, res){
-  res.send('Server is up.');
+  var context = { title: 'Login' }
+  res.render('login', context);
 });
 
-/* Username and password authentication */
+/* Logged in page */
+app.get('/home', function(req, res){
+  var context = { title: 'Home' }
+  res.render('home', context);
+});
+
+/* Username and password authentication for Shoppers, React Native App */
 app.post('/auth', function(req, res) {
   console.log(req.body);
   // error handling for body contains username and password
 
   pool.query('SELECT * FROM users WHERE username=?', 
     [req.body.username], 
+    function(err, result, fields){
+      if(err) {
+        console.log('DB query error\n');
+        console.log(err);
+        res.send(JSON.stringify({auth: 'DB Error'}));
+        return;
+      }
+      if(result.length) {
+        console.log(result);
+
+        bcrypt.compare(req.body.password, result[0].passwordHash, function(berr, bres) {
+            if(berr) {
+                console.log(berr);
+            }
+            if(bres) {
+              res.status(200);
+              res.send(JSON.stringify({auth: 'Valid'}));
+            }
+            else {
+              res.status(403);
+              res.send(JSON.stringify({auth: 'Invalid'}));
+            }
+        });
+      }
+      else {
+        res.status(403);
+        res.send(JSON.stringify({auth: 'Not Found'}));
+      }
+  });
+});
+
+
+/* Username and password authentication for market accounts */
+app.post('/authMarket', function(req, res) {
+  console.log(req.body);
+  // error handling for body contains username and password
+
+  pool.query('SELECT * FROM markets WHERE username=?', 
+    [dbTable, req.body.username], 
     function(err, result, fields){
       if(err) {
         console.log('DB query error\n');
@@ -143,21 +189,21 @@ app.post('/auth', function(req, res) {
                 console.log(berr);
             }
             if(bres) {
-                res.send(JSON.stringify({auth: 'Valid'}));
+              res.status(200);
+              res.send(JSON.stringify({auth: 'Valid'}));
             }
             else {
-                res.send(JSON.stringify({auth: 'Invalid'}));
+              res.status(403);
+              res.send(JSON.stringify({auth: 'Invalid'}));
             }
         });
       }
       else {
+        res.status(403);
         res.send(JSON.stringify({auth: 'Not Found'}));
       }
-
   });
-
 });
-
 
 
 //for unit testing only
