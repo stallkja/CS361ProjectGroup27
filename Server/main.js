@@ -282,7 +282,7 @@ app.post('/auth', function(req, res) {
     jwt: null
   };
 
-  if(!req.body.username || !req.body.password) {
+  if(!req.body || !req.body.username || !req.body.password) {
     response.auth = 'Bad parameters';
     res.status(500).json(response);
     return;
@@ -335,7 +335,7 @@ console.log("testing");
 });
 
 /* Username and password authentication for market accounts through web app */
-app.post('/marketAuth', function(req, res) {
+app.post('/authMarket', function(req, res) {
   console.log(req.body);
   // error handling for body contains username and password
 
@@ -345,7 +345,7 @@ app.post('/marketAuth', function(req, res) {
     jwt: null
   };
 
-  if(!req.body.username || !req.body.password) {
+  if(!req.body || !req.body.username || !req.body.password) {
     response.auth = 'Bad parameters';
     res.status(500).json(response);
     return;
