@@ -134,6 +134,143 @@ app.get('/home', function(req, res){
   res.render('home', context);
 });
 
+
+/*New market applies for market account*/
+app.post('/createMarket',function(req, res){
+   console.log('here');
+   var toReturn = {"isErrored": false};
+
+   if(req.body != null) {
+
+   //Validate the market name	
+   if(req.body.marketName == null || req.body.marketName == ""){
+      toReturn.isErrored = true;
+      toReturn.marketName = "No Name";
+   }
+   else if(req.body.marketName.length > 255) {
+       toReturn.isErrored = true;
+       toReturn.marketName = "Name too long";	 
+   }
+ 
+   //Validate the email	  
+   if(req.body.email == null || req.body.email == ""){
+      toReturn.isErrored = true;
+      toReturn.email = "No email";
+   }
+   else if(!req.body.email.includes("@")){
+      toReturn.isErrored = true;
+      toReturn.email = "Not an email";
+   }	 
+   else if(req.body.email.length > 255){
+       toReturn.isErrored = true;
+       toReturn.email = "Email too long";
+   } 	
+
+   //Validate the phone number	
+   if(req.body.phone == null || req.body.phone == ""){
+      toReturn.isErrored = true;
+      toReturn.phone = "No phone";
+   }	
+   else if(req.body.phone.length > 255){
+       toReturn.isErrored = "true";
+       toReturn.phone = "Invalid phone number";	
+   }	
+
+   //Validate the contact
+   if(req.body.contact == null || req.body.contact == ""){
+      toReturn.isErrored = true;
+      toReturn.contact = "No contact";
+   }	
+   else if(req.body.contact.length > 255){
+       toReturn.isErrored = "true";
+       toReturn.contact = "Invalid contact";	
+   }
+	
+   //Validate address
+   if(req.body.address == null || req.body.address == ""){
+      toReturn.isErrored = true;
+      toReturn.address = "No address";
+   }	
+   else if(req.body.address.length > 255){
+       toReturn.isErrored = "true";
+       toReturn.address = "Invalid address";	
+   }	
+   
+   //Validate the city
+   if(req.body.city == null || req.body.city == ""){
+      toReturn.isErrored = true;
+      toReturn.city = "No city";
+   }	
+   else if(req.body.city.length > 255){
+       toReturn.isErrored = "true";
+       toReturn.city = "Invalid city";	
+   }
+
+   //Validate the state
+   if(req.body.state == null || req.body.state == ""){
+      toReturn.isErrored = true;
+      toReturn.state = "No state";
+   }	
+   else if(req.body.state.length > 2){
+       toReturn.isErrored = "true";
+       toReturn.state = "Use state abbreviation.";	
+   }
+   //Validate the zip
+   if(req.body.zip == null || req.body.zip == ""){
+      toReturn.isErrored = true;
+      toReturn.zip = "No zip";
+   }	
+   else if(req.body.zip.length > 255){
+       toReturn.isErrored = "true";
+       toReturn.zip = "Invalid zip";	
+   }
+
+   if(toReturn.marketName == null){
+     pool.query("SELECT * FROM market_users m WHERE m.name=?", req.body.marketName, function(err, result){
+       if(err != null){
+          console.log(err);
+       }
+       else if(result.length > 0){
+          toReturn.isErrored = true;
+	  toReturn.marketName = "Market with that name already exists";
+	  res.send(JSON.stringify(toReturn));    
+       }
+       else{
+         if(toReturn.isErrored == false){
+	   console.log("input is valid");
+	    bcrypt.genSalt(10, function(err, salt){
+	      bcrypt.hash(req.body.password, salt, function(err, hash){
+	        if(err != null)
+		   console.log(err);
+                console.log("about to insert!");		
+		pool.query("INSERT INTO market_users (name, passwordHash,  email, phone, contact, address, city, state, zip, status, salt ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", [req.body.marketName, hash, req.body.email, req.body.phone, req.body.contact, req.body.address, req.body.city, req.body.state, req.body.zip, "Pending", salt ], function(err, result){
+		  if(err != null)
+		    console.log(err);
+		  
+                  else
+		    res.send(JSON.stringify(toReturn));
+		  
+		});       
+	      });
+	    });
+	 }
+	 else
+           res.send(JSON.stringify(toReturn)); 
+       }
+           
+     });
+   }
+	else {
+         res.send(JSON.stringify(toReturn));   
+	}
+    
+  }
+  else{ 
+       toReturn.isErrored = true;
+       res.send(toReturn);
+     }
+});
+
 /* Username and password authentication for Shoppers, React Native App */
 app.post('/auth', function(req, res) {
   console.log(req.body);
@@ -190,6 +327,12 @@ app.post('/auth', function(req, res) {
   });
 });
 
+
+app.get("/newMarket", function(req, res){
+var context = {};
+console.log("testing");
+	res.render("newMarket", context);
+});
 
 /* Username and password authentication for market accounts through web app */
 app.post('/authMarket', function(req, res) {
