@@ -145,7 +145,7 @@ app.post('/auth', function(req, res) {
     jwt: null
   };
 
-  if(!req.body.username || !req.body.password) {
+  if(!req.body || !req.body.username || !req.body.password) {
     response.auth = 'Bad parameters';
     res.status(500).json(response);
     return;
@@ -202,7 +202,7 @@ app.post('/authMarket', function(req, res) {
     jwt: null
   };
 
-  if(!req.body.username || !req.body.password) {
+  if(!req.body || !req.body.username || !req.body.password) {
     response.auth = 'Bad parameters';
     res.status(500).json(response);
     return;
