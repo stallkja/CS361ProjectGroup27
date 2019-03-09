@@ -39,19 +39,28 @@ function assertTrue(a, b, msg) {
 // Test username password login
 axios.post(route, validUser).then(response => {
     assertTrue(response.data.auth, 'Valid', 'Log in with valid username and password combo should return Valid');
+    console.log(response.data);
+});
+
+axios.post(route, validUser).then(response => {
+    assertTrue((response.data.jwt !== null), true, 'Log in with valid username and password combo should return JSON Web Token');
+    console.log(response.data);
 });
 
 axios.post(route, wrongPassword).then(response => {
 }).catch(error => {
     assertTrue(error.response.data.auth, 'Invalid', 'Log in with valid username and wrong password should return Invalid');
+    console.log(error.response.data);
 });
 
 axios.post(route, wrongUsername).then(response => {
 }).catch(error => {
     assertTrue(error.response.data.auth, 'Not Found', 'Log in with username that does not exist should return Not Found');
+    console.log(error.response.data);
 });
 
 axios.post(route, {}).then(response => {
 }).catch(error => {
     assertTrue(error.response.data.auth, 'Bad parameters', 'Log in without any username or password should return Bad Parameters');
+    console.log(error.response.data);
 });
