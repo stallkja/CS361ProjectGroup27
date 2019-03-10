@@ -8,6 +8,8 @@ const mysql = require('mysql');
 const fs = require('fs');
 const path = require('path');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 var settings = JSON.parse(fs.readFileSync('settings.json', 'utf8'));
 var pool = mysql.createPool(settings.dbConnection);
@@ -121,17 +123,38 @@ app.post("/CreateAccount", function(req, res) {
 
 });
 
+/* Authentication middleware */
+app.use('/home', function (req, res, next) {
+  if(req.cookies) {
+    jwt.verify(req.cookies.jwt, SECRET, (err, decoded) => {
+      if(decoded) {
+        console.log("jwt:", decoded);
+      }
+      else {
+        console.log("JWT decoding failed. Redirecting to login page.");
+        res.render('login');
+        return;
+      }
+      next();
+    });
+  }
+  else {
+    res.render('login');
+    return;
+  }
+});
+
 /* Default home page */
 app.get('/', function(req, res){
-  var context = { title: 'Login' }
-  res.render('login', context);
+  var context = { title: 'Home' }
+  res.render('home', context);
 });
 
 /* Logged in page */
 app.get('/home', function(req, res){
-  var context = { title: 'Home' }
-  console.log(req);
-  res.render('home', context);
+  var context = { title: 'Authenticated' }
+  //console.log(req);
+  res.render('authenticated', context);
 });
 
 
@@ -299,7 +322,7 @@ app.post('/auth', function(req, res) {
         return;
       }
       if(result.length) {
-        console.log(result);
+        //console.log(result);
 
         bcrypt.compare(req.body.password, result[0].passwordHash, function(berr, bres) {
             if(berr) {
@@ -362,7 +385,7 @@ app.post('/authMarket', function(req, res) {
         return;
       }
       if(result.length) {
-        console.log(result);
+        //console.log(result);
 
         bcrypt.compare(req.body.password, result[0].passwordHash, function(berr, bres) {
             if(berr) {
