@@ -8,7 +8,14 @@ function login(){
    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
    req.addEventListener('load',function(){
       if(req.status >= 200 && req.status < 400){
-         window.sessionStorage.token = JSON.parse(req.response).jwt;
+         const token = JSON.parse(req.response).jwt;
+
+         let date = new Date();
+         date.setTime(date.getTime()+(7 * 24 * 60 * 60 *1000));
+         let expires = "; expires="+date.toGMTString();
+
+         document.cookie = "jwt=" + token + expires;
+         window.sessionStorage.token = token;
          window.location.href = "/home";
       } else {
          console.log('Error');
@@ -18,6 +25,11 @@ function login(){
    req.send(
       "username=" + user + "&password=" + pass + "&accountType=users"
    );
+}
+
+function logout() {
+   document.cookie = 'jwt=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+   window.location.href = "/home";
 }
 
 
@@ -39,9 +51,7 @@ function newMarket()
    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
    req.addEventListener('load',function(){
       if(req.status >= 200 && req.status < 400){
-      //   window.sessionStorage.token = JSON.parse(req.response).jwt;
-         //window.location.href = "/home";
-	 alert("Success");
+	        alert("Success! Your application has been submitted.");
       } else {
          console.log('Error');
          alert("Invalid Input.");
