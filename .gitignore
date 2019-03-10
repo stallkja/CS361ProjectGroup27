@@ -7,3 +7,4 @@ Client/*.mobileprovision
 Server/settings.json
 Server/.vscode/CS361Private.ppk
 **/node_modules
+Server/*.log
