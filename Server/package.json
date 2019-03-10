@@ -1,0 +1,24 @@
+{
+  "name": "uber-server",
+  "description": "CS 361 Group 27 - Server",
+  "version": "0.0.1",
+  "repository": "https://github.com/stallkja/CS361ProjectGroup27",
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "jsonwebtoken": "^8.5.0",
+    "morgan": "^1.9.1",
+    "mysql": "^2.16.0",
+    "nodemailer": "^5.1.1"
+  },
+  "scripts": {
+    "start": "node main.js"
+  },
+  "engines": {
+    "node": ">= 7.6"
+  },
+  "license": "MIT"
+}

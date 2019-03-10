@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
+import { Text, View, StyleSheet, TouchableHighlight, ScrollView  } from 'react-native';
 import t from 'tcomb-form-native';
 
 const user = t.struct({
@@ -115,10 +115,12 @@ export default class userRegister extends Component {
           var values = JSON.parse(res._bodyText);
           if(res.status == 200 && values.isErrored == false)
             this.props.navigation.pop();
+          else 
+            alert(JSON.stringify(res));
+        }).catch( reason => 
+        {
+          alert(JSON.stringify(reason));
         });
-        errors.fields.userName.error = "Username is already taken";
-        errors.fields.userName.hasError = true;
-        this.setState({"options":errors});
       }
       else
       {
@@ -128,8 +130,8 @@ export default class userRegister extends Component {
   }
 
   updateCoords(coords) {
-    this.setState({ currentLongitutde: coords.latitude });
-    this.setState({ currentLatitude: coords.longitude });
+    this.setState({ currentLongitutde: coords.longitude });
+    this.setState({ currentLatitude: coords.latitude });
   }
 
   onChange(lValue) {
@@ -152,6 +154,7 @@ export default class userRegister extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+      <ScrollView>
         <Form
           type={user}
           options={this.state.options}
@@ -178,6 +181,7 @@ export default class userRegister extends Component {
           underlayColor="red">
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
+         </ScrollView>
       </View>
     );
   }
@@ -195,9 +199,12 @@ const styles = StyleSheet.create({
     color: 'white',
     alignSelf: 'center',
   },
-  button: {
-    height: 30,
+  button:{
+    height: 50,
     backgroundColor: 'blue',
+    alignItems: 'center',
+    padding: 10,
     marginTop: 5,
-  },
+    marginBottom: 5
+  }
 });

@@ -1,7 +1,6 @@
 const axios = require('axios')
-console.log("connecting to 157.230.158.143/CreateAccount")
-
-
+//const host = "http://157.230.158.143"
+const host = "http://127.0.0.1:8080"
 var user = {
     "username": "jason",
     "password": "password",
@@ -23,7 +22,7 @@ function printLog(passed, msg) {
 
 
 //email testing
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "jason",
     "password": "password",
     "email": "fakegmail.com",
@@ -38,7 +37,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
 });
 
 
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "jason",
     "password": "password",
     "homeLat": "12",
@@ -54,7 +53,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
 
 
 //username testing
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "password": "password",
     "email": "fake@mail.com",
     "homeLat": "12",
@@ -67,7 +66,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
         printLog(false, "No username");
 });
 
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "a",
     "password": "password",
     "email": "fake@mail.com",
@@ -81,7 +80,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
         printLog(false, "Username too short");
 });
 
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "mikeisthebestpersonthathaseverylivedandheisacowthisisareallylong1",
     "password": "password",
     "email": "fake@gmail.com",
@@ -100,7 +99,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
 
 
 //password testing
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "jason",
     "email": "fake@gmail.com",
     "homeLat": "12",
@@ -113,7 +112,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
         printLog(false, "No password");
 });
 
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "jason",
     "password": "123456",
     "email": "fake@gmail.com",
@@ -127,7 +126,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
         printLog(false, "Password too short");
 });
 
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "jason",
     "password": "akjhlasdflkjhasdfkjlhasfkljehfaklmbnsbnfdlkjhdsflkjdhfslkjfhlkjdhasdfsadf",
     "email": "fake@gmail.com",
@@ -143,7 +142,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
 
 
 //latitude testing
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "jason",
     "password": "123456",
     "email": "fake@gmail.com",
@@ -157,7 +156,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
         printLog(false, "Latitude outside domain below");
 });
 
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "jason",
     "password": "akjhlasdflkjhasdfkjlhasfkljehfaklmbnsbnfdlkjhdsflkjdhfslkjfhlkjdhasdfsadf",
     "email": "fake@gmail.com",
@@ -173,7 +172,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
 
 
 //longitude
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "jason",
     "password": "123456",
     "email": "fake@gmail.com",
@@ -187,7 +186,7 @@ axios.post('http://157.230.158.143/CreateAccount', {
         printLog(false, "Longitude outside domain above");
 });
 
-axios.post('http://157.230.158.143/CreateAccount', {
+axios.post(host+'/CreateAccount', {
     "username": "jason",
     "password": "akjhlasdflkjhasdfkjlhasfkljehfaklmbnsbnfdlkjhdsflkjdhfslkjfhlkjdhasdfsadf",
     "email": "fake@gmail.com",
@@ -210,15 +209,15 @@ var newUser = {
     "homeLng": "0"
 };
 
-axios.post('http://157.230.158.143/CreateAccount', newUser).then(result => {
+axios.post(host+'/CreateAccount', newUser).then(result => {
     var resultOBJ = result.data;
 
-    axios.post('http://157.230.158.143/queryAccounts', { "username": newUser.username }).then(resQuery => {
+    axios.post(host+'/queryAccounts', { "username": newUser.username }).then(resQuery => {
         //check that a second user cannot be created
 
         if (resultOBJ.isErrored == false && resQuery.data.length == 1) {
             printLog(true, "Creating Account");
-            axios.post('http://157.230.158.143/CreateAccount', newUser).then(result => {
+            axios.post(host+'/CreateAccount', newUser).then(result => {
                 var resultOBJ = result.data;
                 if (resultOBJ.isErrored == true && resultOBJ.username == "Username is already taken") {
                     printLog(true, "Username is already taken");

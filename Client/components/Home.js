@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { Button } from 'react-native';
 import { Text, View, StyleSheet , TouchableHighlight} from 'react-native';
 import { Constants } from 'expo';
+import deviceStorage from './Storage';
+import { AsyncStorage } from 'react-native';
 
 export default class HomeScreen extends React.Component
-{
+{ 
   render()
   {
     const {navigate} = this.props.navigation;
+
     return(
       <View style={styles.container}>
         <TouchableHighlight style={styles.button} onPress={ () => navigate('Login')} underlayColor='red'>
@@ -17,6 +20,7 @@ export default class HomeScreen extends React.Component
         <TouchableHighlight style={styles.button} onPress={ () => navigate('Register')} underlayColor='red'>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableHighlight>
+        <Text>Version 0.1</Text>
       </View>)
   }
 }
@@ -31,11 +35,14 @@ const styles = StyleSheet.create({
   buttonText:{
     fontSize: 20,
     color: 'white',
-    alignSelf: 'center'
+    //alignSelf: 'center'
   },
   button:{
-    height: 30,
+    height: 50,
     backgroundColor: 'blue',
-    marginTop : 5
+    alignItems: 'center',
+    padding: 10,
+    marginTop: 5,
+    marginBottom: 5
   }
 });
