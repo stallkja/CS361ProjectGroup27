@@ -1,10 +1,10 @@
 function login(){
-   const user = document.getElementById('username').value;
+   const user = document.getElementById('email').value;
    const pass = document.getElementById('password').value;
 
    let req = new XMLHttpRequest();
 
-   req.open('POST', '/auth', true);
+   req.open('POST', '/authMarket', true);
    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
    req.addEventListener('load',function(){
       if(req.status >= 200 && req.status < 400){
@@ -15,21 +15,58 @@ function login(){
          let expires = "; expires="+date.toGMTString();
 
          document.cookie = "jwt=" + token + expires;
-         window.sessionStorage.token = token;
+         sessionStorage.setItem('token', token);
          window.location.href = "/home";
       } else {
-         console.log('Error');
-         alert("Invalid username and password combination.");
+         alert("Invalid email and password combination.");
    }});
 
    req.send(
-      "username=" + user + "&password=" + pass + "&accountType=users"
+      "email=" + user + "&password=" + pass + "&accountType=markets"
    );
 }
 
 function logout() {
    document.cookie = 'jwt=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+   sessionStorage.clear();
    window.location.href = "/home";
+}
+
+function changePassword() {
+   const curPass = document.getElementById('curPass').value;
+   const newPass = document.getElementById('newPass').value;
+   const newPass2 = document.getElementById('newPass2').value;
+
+   if(!curPass.length) {
+      alert("Please enter your current password.");
+      return;
+   }
+
+   if(!newPass.length || !newPass2.length) {
+      alert("Please enter your new password in both fields.");
+      return;
+   }
+
+   if(newPass !== newPass2) {
+      alert("New passwords in both fields don't match.");
+      return;
+   }
+
+   const token = sessionStorage.getItem('token');
+   let req = new XMLHttpRequest();
+
+   req.open('POST', '/changePassword', true);
+   req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+   req.addEventListener('load',function(){
+      alert(JSON.parse(req.response).message);
+      if(req.status >= 200 && req.status < 400){
+         window.location.href = "/home";
+      }
+   });
+
+   req.send(
+      "curPass=" + curPass + "&newPass=" + newPass + "&token=" + token
+   );
 }
 
 

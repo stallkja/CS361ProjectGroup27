@@ -219,6 +219,11 @@ app.get('/home', function(req, res){
   res.render('authenticated', context);
 });
 
+/* Logged in change password page */
+app.get('/home/changePassword', function(req, res){
+  var context = { title: 'Change Password' }
+  res.render('changePassword', context);
+});
 
 app.get('/marketHome', function(req, res){
    var context = {title: 'Market Home Page'};
@@ -370,7 +375,7 @@ app.post('/auth', function(req, res) {
   let response = {
     auth: null,
     success: false,
-    jwt: null
+    jwt: null,
   };
 
   if(!req.body || !req.body.username || !req.body.password) {
@@ -393,7 +398,7 @@ app.post('/auth', function(req, res) {
 
         bcrypt.compare(req.body.password, result[0].passwordHash, function(berr, bres) {
             if(berr) {
-                console.log(berr);
+                //console.log(berr);
                 response.auth = 'Server Error';
                 res.status(500).json(response);
                 return;
@@ -401,7 +406,7 @@ app.post('/auth', function(req, res) {
             if(bres) {
               response.auth = 'Valid';
               response.success = true;
-              response.jwt = jwt.sign({username: req.body.username, exp: Date.now() / 1000 + 60 * 60 * 24 * 7}, SECRET);
+              response.jwt = jwt.sign({username: req.body.username, type: "shopper", exp: Date.now() / 1000 + 60 * 60 * 24 * 7}, SECRET);
               res.status(200).json(response);
             }
             else {
@@ -426,23 +431,23 @@ console.log("testing");
 
 /* Username and password authentication for market accounts through web app */
 app.post('/authMarket', function(req, res) {
-  console.log(req.body);
-  // error handling for body contains username and password
+  //console.log(req.body);
+  // error handling for body contains email and password
 
   let response = {
     auth: null,
     success: false,
-    jwt: null
+    jwt: null,
   };
 
-  if(!req.body || !req.body.username || !req.body.password) {
+  if(!req.body || !req.body.email || !req.body.password) {
     response.auth = 'Bad parameters';
     res.status(500).json(response);
     return;
   }
 
-  pool.query('SELECT * FROM markets WHERE username=?', 
-    [req.body.username], 
+  pool.query('SELECT * FROM market_users WHERE email=?', 
+    [req.body.email], 
     function(err, result, fields){
       if(err) {
         LogMsg(err, LOG_TYPE.ERROR);
@@ -455,7 +460,7 @@ app.post('/authMarket', function(req, res) {
 
         bcrypt.compare(req.body.password, result[0].passwordHash, function(berr, bres) {
             if(berr) {
-              LogMsg(berr, LOG_TYPE.ERROR);
+              //LogMsg(berr, LOG_TYPE.ERROR);
                 response.auth = 'Server Error';
                 res.status(500).json(response);
                 return;
@@ -463,7 +468,7 @@ app.post('/authMarket', function(req, res) {
             if(bres) {
               response.auth = 'Valid';
               response.success = true;
-              response.jwt = jwt.sign({username: req.body.username, exp: Date.now() / 1000 + 60 * 60 * 24 * 7}, SECRET);
+              response.jwt = jwt.sign({username: req.body.email, type: "market", exp: Date.now() / 1000 + 60 * 60 * 24 * 7}, SECRET);
               res.status(200).json(response);
             }
             else {
@@ -476,6 +481,85 @@ app.post('/authMarket', function(req, res) {
         response.auth = 'Not Found';
         res.status(403).json(response);
       }
+  });
+});
+
+/* Change password for market accounts through web app */
+app.post('/changePassword', function(req, res) {
+  //console.log(req.body);
+  // error handling for body contains email and password
+
+  let response = {
+    message: null,
+    success: false,
+  };
+
+  if(!req.body || !req.body.curPass || !req.body.newPass || !req.body.token) {
+    response.message = 'Bad parameters';
+    res.status(500).json(response);
+    return;
+  }
+
+  jwt.verify(req.body.token, SECRET, (err, decoded) => {
+    if(decoded) {
+      let sqlQuery;
+      if(decoded.type === "shopper") {
+        sqlQuery = 'SELECT * FROM users WHERE username=?';
+      }
+      else if(decoded.type === "market") {
+        sqlQuery = "SELECT * FROM market_users WHERE email=?";
+      }
+
+      pool.query(sqlQuery, 
+      decoded.username, 
+      function(err, result, fields){
+        if(result.length) {
+          bcrypt.compare(req.body.curPass, result[0].passwordHash, function(berr, bres) {
+            // curPassword matched database password
+            if(bres) {
+              // make new hash
+              bcrypt.hash(req.body.newPass, 10, function(hashErr, hash) {
+                // update DB
+                let sqlUpdate;
+                if(decoded.type === "shopper") {
+                  sqlUpdate = "UPDATE users SET passwordHash=? WHERE username=?";
+                }
+                else if(decoded.type === "market") {
+                  sqlUpdate = "UPDATE market_users SET passwordHash=? WHERE email=?";
+                }
+                pool.query(sqlUpdate, 
+                  [hash, decoded.username],
+                  function(Qerr, Qresult, Qfields){
+                    if(Qerr) {
+                      response.message = "Server error";
+                      res.status(500).json(response);
+                      return;
+                    }
+                    // DB query failed
+                    else {
+                      response.message = "Updated password";
+                      response.success = true;
+                      res.status(200).json(response);
+                      return;
+                    }
+                  });
+              });
+            }
+            // curPass invalid
+            else {
+              response.message = "Wrong current password";
+              res.status(403).json(response);
+              return;
+            }
+          });
+        }
+      });
+    }
+    else {
+      response.message = "User must be logged in to change password";
+      res.status(403).json(response);
+      return;
+    }
   });
 });
 
