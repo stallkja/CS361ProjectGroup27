@@ -1,5 +1,5 @@
 function login(){
-   const user = document.getElementById('email').value;
+   const user = document.getElementById('username').value;
    const pass = document.getElementById('password').value;
 
    let req = new XMLHttpRequest();
@@ -26,10 +26,57 @@ function login(){
    );
 }
 
-function logout() {
+
+function loginAdmin(){
+   const user = document.getElementById('Email').value;
+   const pass = document.getElementById('password').value;
+
+   let req = new XMLHttpRequest();
+
+   req.open('POST', '/admin/auth', true);
+   req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+   req.addEventListener('load',function(){
+      if(req.status >= 200 && req.status < 400){
+         const token = JSON.parse(req.response).jwt;
+
+         let date = new Date();
+         date.setTime(date.getTime()+(7 * 24 * 60 * 60 *1000));
+         let expires = "; expires="+date.toGMTString();
+
+         document.cookie = "jwt=" + token + expires;
+         sessionStorage.setItem('token', token);
+         window.location.href = "/admin/home";
+      } else {
+         alert("Invalid email and password combination.");
+   }});
+
+   req.send(
+      "email=" + user + "&password=" + pass + "&accountType=markets"
+   );
+}
+
+function approveMarket(id, status)
+{
+   const denialReason = document.getElementById('reason').value;
+   if(denialReason == null)
+   denialReason = "";
+   var req = new XMLHttpRequest();
+    req.open('POST', '/admin/approveMarket', true);
+    req.setRequestHeader('Content-Type', 'application/json');
+    req.addEventListener('load',function(){
+        if(req.status >= 200 && req.status < 400){
+            window.location.href = "/admin/manageMarkets";
+        } else {
+        alert(req.response);
+    }});
+    req.send(JSON.stringify({"id":id, "status":status, "reason":denialReason}));
+}
+
+
+function logout( returnHref = "/home") {
    document.cookie = 'jwt=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
    sessionStorage.clear();
-   window.location.href = "/home";
+   window.location.href = returnHref;
 }
 
 function changePassword() {

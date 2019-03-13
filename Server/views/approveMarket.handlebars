@@ -1,0 +1,52 @@
+<div class="card">
+  <h5 class="card-header"> Market For Apporval</h5>
+  <div class="card-body">
+     <form id="newMarket">
+       <div id="form-group">
+         <lable for="marketName"> Market Name </lable>
+         <input class="form-control" type="text" id="marketName" name="marketName" placeholder={{{name}}} readonly/>
+       </div> <br />
+       <div id="form-group">
+         <lable for="email"> Email </lable>
+         <input class="form-control" type="email" id="email" name="email" placeholder={{{email}}} readonly/>
+       </div> <br />
+       <div id="form-group">
+         <lable for="phone"> Phone Number </lable>
+         <input class="form-control" type="text" id="phone" name="phone" placeholder={{{phone}}} readonly/>
+       </div> <br />
+       <div id="form-group">
+         <lable for="contact"> Contact </lable>
+         <input class="form-control" type="text" id="contact" name="contact" placeholder={{{contact}}} readonly/>
+       </div> <br />
+       <div id="form-group">
+         <lable for="address"> Street Address </lable>
+         <input class="form-control" type="text" id="address" name="address" placeholder={{{address}}} readonly/>
+       </div> <br />
+       <div id="form-group">
+         <lable for="city"> City </lable>
+         <input class="form-control" type="text" id="city" name="city" placeholder={{{city}}} readonly/>
+       </div> <br />
+       <div id="form-group">
+         <lable for="state"> State </lable>
+         <input class="form-control" type="text" id="state" name="state" placeholder={{{state}}} readonly/>
+       </div> <br />
+       <div id="form-group">
+         <lable for="zip"> Zip </lable>
+         <input class="form-control" type="text" id="zip" name="zip" placeholder={{{zip}}} readonly/>
+       </div> <br />
+
+       <div id="form-group">
+         <lable for="reason"> Reason For Denial </lable>
+         <textarea class="form-control" rows="5" id="reason"></textarea>
+       </div> <br />
+        
+
+       <div id="form-group"></div>
+       <input type="button" class="btn btn-info" style="background-color: #5cb85c;" id="submitBtnApprove" value="Approve" onclick ="approveMarket({{{marketID}}}, 'Approved')"/>
+       <input type="button" class="btn btn-info btn-danger" id="submitBtnDeny" value="Deny" onclick ="approveMarket({{{marketID}}}, 'Denied')"/>
+       </div><br />
+       
+       
+    </form>
+  </div>
+ </div>

@@ -49,7 +49,7 @@ LogMsg = function(msg, type = LOG_TYPE.ERROR)
 			var mailOptions = settings.mailOptions
 			mailOptions.subject = 'ERROR AT: ' + (new Date()).toISOString()
 			mailOptions.text = msg;
-			transporter.sendMail(mailOptions);
+			Emailer.sendMail(mailOptions);
 		}
 	}
 	
@@ -206,6 +206,213 @@ app.use('/home', function (req, res, next) {
     return;
   }
 });
+
+
+requireAdmin = function(next)
+{
+  return function(req, res)
+  {
+    if(req.cookies) {
+      jwt.verify(req.cookies.jwt, SECRET, (err, decoded) => {
+        if(decoded && decoded.type == "admin") {
+          LogMsg(JSON.stringify(decoded), LOG_TYPE.INFO);
+        }
+        else if (decoded && decoded.type != "admin")
+        {
+          LogMsg(JSON.stringify(decoded) + "attempted to acces an admin page", LOG_TYPE.ERROR);
+        }
+        else {
+          LogMsg("JWT decoding failed. Redirecting to login page.", LOG_TYPE.INFO);
+          res.render('loginAdmin');
+          return;
+        }
+        next(req, res);
+      });
+    }
+    else {
+      res.render('loginAdmin');
+      return;
+    }
+  }
+}
+
+
+app.get('/admin/login', function(req, res)
+{
+  res.render("loginAdmin");
+  return;
+});
+
+app.post('/admin/auth', function(req, res) {
+  //console.log(req.body);
+  // error handling for body contains email and password
+
+  let response = {
+    auth: null,
+    success: false,
+    jwt: null,
+  };
+
+  if(!req.body || !req.body.email || !req.body.password) {
+    response.auth = 'Bad parameters';
+    res.status(500).json(response);
+    return;
+  }
+
+  pool.query('SELECT * FROM admins WHERE email=?', 
+    [req.body.email], 
+    function(err, result, fields){
+      if(err) {
+        LogMsg(err, LOG_TYPE.ERROR);
+        response.auth = 'Server Error';
+        res.status(500).json(response);
+        return;
+      }
+      if(result.length) {
+        //console.log(result);
+
+        bcrypt.compare(req.body.password, result[0].passwordHash, function(berr, bres) {
+            if(berr) {
+              //LogMsg(berr, LOG_TYPE.ERROR);
+                response.auth = 'Server Error';
+                res.status(500).json(response);
+                return;
+            }
+            if(bres) {
+              response.auth = 'Valid';
+              response.success = true;
+              response.jwt = jwt.sign({username: req.body.email, type: "admin", exp: Date.now() / 1000 + 60 * 60 * 24 * 7}, SECRET);
+              res.status(200).json(response);
+            }
+            else {
+              response.auth = 'Invalid';
+              res.status(403).json(response);
+            }
+        });
+      }
+      else {
+        response.auth = 'Not Found';
+        res.status(403).json(response);
+      }
+  });
+});
+
+app.get("/admin/home", requireAdmin(function(req,res)
+{   
+  res.render("homeAdmin");
+  return;
+}));
+
+
+app.get("/admin/manageMarkets", requireAdmin(function(req,res)
+{
+  res.render("manageMarketAuth");
+  return;
+}));
+
+app.get("/admin/approveMarket", requireAdmin(function(req,res)
+{
+  console.log(req.query.id);
+  if(req.query == null || req.query.id == null)
+  {
+    res.redirect("/admin/manageMarkets");
+    return;
+  }
+  pool.query("SELECT * FROM market_users WHERE marketID = ?;",[req.query.id],function(err, result, fields)
+  {
+    if(err || result.length == 0)
+    {
+      LogMsg(err, LOG_TYPE.ERROR);
+      res.redirect("/admin/manageMarkets");
+    }
+    else
+    {
+      result[0].passwordHash = "";
+      result[0].salt = "";
+      res.render("approveMarket", result[0]);
+      return;
+    }
+  });
+
+  //res.render("approveMarket");
+  return;
+}));
+
+app.post("/admin/getUnverified", requireAdmin(function(req,res)
+{
+  pool.query("SELECT marketID, name, email, contact FROM market_users WHERE market_users.status = 'Pending';",[],function(err, result, fields)
+  {
+    if(err)
+    {
+      LogMsg(err, LOG_TYPE.ERROR);
+    }
+    else
+    {
+      res.send(JSON.stringify(result));
+      return;
+    }
+  });
+}));
+
+app.post("/admin/approveMarket", requireAdmin(function(req,res)
+{
+  console.log(req.body);
+  if(req.body == null || req.body.id == null)
+  {
+    res.redirect("/admin/manageMarkets");
+    return;
+  }
+  if(req.body.status == 'Approved' || req.body.status == 'Denied')
+  {
+    pool.query("UPDATE market_users SET status = ? WHERE marketID = ?",[req.body.status, req.body.id],function(err, result, fields)
+    {
+      if(err)
+      {
+        LogMsg(err, LOG_TYPE.ERROR);
+      }
+      else
+      {
+        res.send("{}");
+        return;
+      }
+    });
+    pool.query("SELECT email FROM market_users where marketID = ?",[req.body.id],function(err, result, fields)
+    {
+      if(err)
+      {
+        LogMsg(err, LOG_TYPE.ERROR);
+      }
+      else if (result.length != 0)
+      {
+        var mailOptions = {};
+        mailOptions.from = settings.mailOptions.from;
+        mailOptions.to = result[0].email;
+
+        if(req.body.status == 'Denied')
+        {
+          mailOptions.subject = 'Market Denial'
+          mailOptions.text = "We are sorry to inform you that your request to create a market has been denied and here is why:\n" + req.body.reason;
+        }
+        else
+        {
+          mailOptions.subject = 'Market Approved'
+          mailOptions.text = "We are happy to announce that your market has been approved. Thank you for registering with our system and we wish you the best of luck"
+        }
+        Emailer.sendMail(mailOptions);
+      return 
+      }
+    });
+  }
+  else
+  {
+    LogMsg("approval message was send that was invalid", LOG_TYPE.ERROR);
+  }
+}))
+
+
+
+
+
 
 /* Default home page */
 app.get('/', function(req, res){

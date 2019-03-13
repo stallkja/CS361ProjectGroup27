@@ -6,3 +6,335 @@
 3/10/2019, 8:58 PM - INFO:JWT decoding failed. Redirecting to login page.
 3/10/2019, 8:58 PM - INFO:JWT decoding failed. Redirecting to login page.
 3/10/2019, 8:58 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:11 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:11 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:11 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:12 PM - INFO:{"username":"jstallkamp@gmail.com","type":"market","exp":1553047977.509,"iat":1552443177}
+3/12/2019, 7:16 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:16 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:24 PM - ERRO:Error: Failed to lookup view "adminHome" in views directory "C:\Users\jason\Desktop\CS361Code\Server\views"
+    at Function.render (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\application.js:580:17)
+    at ServerResponse.render (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\response.js:1008:7)
+    at C:\Users\jason\Desktop\CS361Code\Server\main.js:232:9
+    at C:\Users\jason\Desktop\CS361Code\Server\main.js:219:5
+    at Layer.handle [as handle_request] (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\index.js:335:12)
+3/12/2019, 7:25 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"market","exp":1553048766.454,"iat":1552443966}
+3/12/2019, 7:26 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:27 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:27 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:28 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:28 PM - INFO:{"username":"jstallkamp@gmail.com","type":"market","exp":1553048899.455,"iat":1552444099}
+3/12/2019, 7:28 PM - INFO:{"username":"jstallkamp@gmail.com","type":"market","exp":1553048899.455,"iat":1552444099}
+3/12/2019, 7:28 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:28 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553048938.423,"iat":1552444138}
+3/12/2019, 7:32 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553048938.423,"iat":1552444138}
+3/12/2019, 7:32 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:32 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049143.551,"iat":1552444343}
+3/12/2019, 7:33 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049143.551,"iat":1552444343}
+3/12/2019, 7:33 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:34 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049228.16,"iat":1552444428}
+3/12/2019, 7:34 PM - ERRO:Error: Failed to lookup view "adminHome" in views directory "C:\Users\jason\Desktop\CS361Code\Server\views"
+    at Function.render (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\application.js:580:17)
+    at ServerResponse.render (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\response.js:1008:7)
+    at C:\Users\jason\Desktop\CS361Code\Server\main.js:298:7
+    at jwt.verify (C:\Users\jason\Desktop\CS361Code\Server\main.js:225:9)
+    at C:\Users\jason\Desktop\CS361Code\Server\node_modules\jsonwebtoken\verify.js:223:12
+    at getSecret (C:\Users\jason\Desktop\CS361Code\Server\node_modules\jsonwebtoken\verify.js:90:14)
+    at Object.module.exports [as verify] (C:\Users\jason\Desktop\CS361Code\Server\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\jason\Desktop\CS361Code\Server\main.js:216:11
+    at Layer.handle [as handle_request] (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\route.js:137:13)
+3/12/2019, 7:34 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049228.16,"iat":1552444428}
+3/12/2019, 7:36 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049228.16,"iat":1552444428}
+3/12/2019, 7:36 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:36 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:36 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:36 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049412.162,"iat":1552444612}
+3/12/2019, 7:36 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049414.295,"iat":1552444614}
+3/12/2019, 7:36 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049415.749,"iat":1552444615}
+3/12/2019, 7:37 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:37 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049456.722,"iat":1552444656}
+3/12/2019, 7:37 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049467.929,"iat":1552444667}
+3/12/2019, 7:37 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:38 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 7:38 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049483.214,"iat":1552444683}
+3/12/2019, 7:40 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049628.936,"iat":1552444828}
+3/12/2019, 7:44 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049840.42,"iat":1552445040}
+3/12/2019, 7:44 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049865.775,"iat":1552445065}
+3/12/2019, 7:44 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049868.01,"iat":1552445068}
+3/12/2019, 7:45 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049868.01,"iat":1552445068}
+3/12/2019, 7:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:47 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:47 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:47 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:49 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:49 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:49 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:49 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:49 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:49 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:50 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:51 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:51 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:51 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:52 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:52 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:52 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:52 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:52 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:52 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:53 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:54 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:54 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:55 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 7:57 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:06 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:06 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:07 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:07 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:07 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:07 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:07 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:07 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:07 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:07 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:14 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:14 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:14 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:14 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:14 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:14 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:14 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:15 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:15 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:15 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:15 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:15 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:15 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:15 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:15 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:15 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:15 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:16 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:16 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:17 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:17 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:17 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:20 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:20 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:21 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:21 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:23 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:24 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:24 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:24 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:24 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:24 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:24 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:25 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:25 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:25 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:25 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:25 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:25 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:27 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:27 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:29 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:29 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:29 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:30 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:30 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:30 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:30 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:30 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:30 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049960.051,"iat":1552445160}
+3/12/2019, 8:31 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553052697.625,"iat":1552447897}
+3/12/2019, 8:31 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553052697.625,"iat":1552447897}
+3/12/2019, 8:31 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553052697.625,"iat":1552447897}
+3/12/2019, 8:33 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553052697.625,"iat":1552447897}
+3/12/2019, 8:33 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553052697.625,"iat":1552447897}
+3/12/2019, 8:33 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553052697.625,"iat":1552447897}
+3/12/2019, 8:33 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553052697.625,"iat":1552447897}
+3/12/2019, 8:33 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553052697.625,"iat":1552447897}
+3/12/2019, 8:33 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553052697.625,"iat":1552447897}
+3/12/2019, 8:33 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553052697.625,"iat":1552447897}
+3/12/2019, 8:38 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:38 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:38 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:38 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:38 PM - ERRO:null
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - ERRO:null
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - ERRO:null
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - ERRO:null
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:39 PM - ERRO:TypeError: Cannot read property 'id' of undefined
+    at C:\Users\jason\Desktop\CS361Code\Server\main.js:314:24
+    at jwt.verify (C:\Users\jason\Desktop\CS361Code\Server\main.js:229:9)
+    at C:\Users\jason\Desktop\CS361Code\Server\node_modules\jsonwebtoken\verify.js:223:12
+    at getSecret (C:\Users\jason\Desktop\CS361Code\Server\node_modules\jsonwebtoken\verify.js:90:14)
+    at Object.module.exports [as verify] (C:\Users\jason\Desktop\CS361Code\Server\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\jason\Desktop\CS361Code\Server\main.js:216:11
+    at Layer.handle [as handle_request] (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\layer.js:95:5)
+3/12/2019, 8:40 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:40 PM - ERRO:TypeError: Cannot read property 'id' of undefined
+    at C:\Users\jason\Desktop\CS361Code\Server\main.js:314:26
+    at jwt.verify (C:\Users\jason\Desktop\CS361Code\Server\main.js:229:9)
+    at C:\Users\jason\Desktop\CS361Code\Server\node_modules\jsonwebtoken\verify.js:223:12
+    at getSecret (C:\Users\jason\Desktop\CS361Code\Server\node_modules\jsonwebtoken\verify.js:90:14)
+    at Object.module.exports [as verify] (C:\Users\jason\Desktop\CS361Code\Server\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\jason\Desktop\CS361Code\Server\main.js:216:11
+    at Layer.handle [as handle_request] (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express\lib\router\layer.js:95:5)
+3/12/2019, 8:40 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:40 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:40 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:40 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:40 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:40 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:40 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:41 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:42 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:42 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:42 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:43 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:43 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:44 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:44 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:45 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:47 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:47 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:47 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:47 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:48 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:48 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:49 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:49 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:49 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:49 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:50 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:50 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:51 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:52 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:52 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:52 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:53 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 8:53 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:08 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:08 PM - ERRO:Error: Parse error on line 45:
+..."approveMarket({{{id}}}}, 'Approved')"/>
+-----------------------^
+Expecting 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 'CLOSE_RAW_BLOCK'
+    at Parser.parseError (C:\Users\jason\Desktop\CS361Code\Server\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (C:\Users\jason\Desktop\CS361Code\Server\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at HandlebarsEnvironment.parse (C:\Users\jason\Desktop\CS361Code\Server\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:43)
+    at compileInput (C:\Users\jason\Desktop\CS361Code\Server\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:515:19)
+    at ret (C:\Users\jason\Desktop\CS361Code\Server\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:524:18)
+    at ExpressHandlebars._renderTemplate (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express-handlebars\lib\express-handlebars.js:250:12)
+    at ExpressHandlebars.<anonymous> (C:\Users\jason\Desktop\CS361Code\Server\node_modules\express-handlebars\lib\express-handlebars.js:173:21)
+3/12/2019, 9:08 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:09 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:09 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:10 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:11 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:11 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:11 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:12 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:12 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:12 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:12 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:12 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:13 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:13 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:13 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:13 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:13 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:13 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:13 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:16 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:16 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:16 PM - ERRO:Error: ER_BAD_FIELD_ERROR: Unknown column 'id' in 'where clause'
+3/12/2019, 9:16 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:16 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:16 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:17 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:17 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:17 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:17 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:17 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:18 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:18 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:18 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:18 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:19 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:19 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:20 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:20 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:20 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:20 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:21 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553053104.928,"iat":1552448304}
+3/12/2019, 9:21 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055680.708,"iat":1552450880}
+3/12/2019, 9:21 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055680.708,"iat":1552450880}
+3/12/2019, 9:21 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055680.708,"iat":1552450880}
+3/12/2019, 9:21 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055680.708,"iat":1552450880}
+3/12/2019, 9:21 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055680.708,"iat":1552450880}
+3/12/2019, 9:21 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055680.708,"iat":1552450880}
+3/12/2019, 9:22 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049628.936,"iat":1552444828}
+3/12/2019, 9:22 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553049628.936,"iat":1552444828}
+3/12/2019, 9:22 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 9:22 PM - INFO:{"username":"jstallkamp@gmail.com","type":"market","exp":1553055736.115,"iat":1552450936}
+3/12/2019, 9:22 PM - INFO:{"username":"jstallkamp@gmail.com","type":"market","exp":1553055736.115,"iat":1552450936}
+3/12/2019, 9:22 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055754.064,"iat":1552450954}
+3/12/2019, 9:22 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055754.064,"iat":1552450954}
+3/12/2019, 9:22 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055754.064,"iat":1552450954}
+3/12/2019, 9:22 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055754.064,"iat":1552450954}
+3/12/2019, 9:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055754.064,"iat":1552450954}
+3/12/2019, 9:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055754.064,"iat":1552450954}
+3/12/2019, 9:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055971.232,"iat":1552451171}
+3/12/2019, 9:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055971.232,"iat":1552451171}
+3/12/2019, 9:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553055971.232,"iat":1552451171}
+3/12/2019, 9:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"market","exp":1553055736.115,"iat":1552450936}
+3/12/2019, 9:26 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/12/2019, 9:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"market","exp":1553055990.799,"iat":1552451190}
+3/12/2019, 9:26 PM - INFO:JWT decoding failed. Redirecting to login page.
