@@ -338,3 +338,6 @@ Expecting 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 
 3/12/2019, 9:26 PM - INFO:JWT decoding failed. Redirecting to login page.
 3/12/2019, 9:26 PM - INFO:{"username":"jstallkamp@gmail.com","type":"market","exp":1553055990.799,"iat":1552451190}
 3/12/2019, 9:26 PM - INFO:JWT decoding failed. Redirecting to login page.
+3/14/2019, 4:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553212012.201,"iat":1552607212}
+3/14/2019, 4:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553212012.201,"iat":1552607212}
+3/14/2019, 4:46 PM - INFO:{"username":"jstallkamp@gmail.com","type":"admin","exp":1553212012.201,"iat":1552607212}

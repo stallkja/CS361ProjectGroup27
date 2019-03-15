@@ -411,6 +411,187 @@ app.post("/admin/approveMarket", requireAdmin(function(req,res)
 
 
 
+//// Working
+app.get("/editMarketInfo", function(req, res){
+  let response = {
+    message: null,
+    success: false,
+  };
+    
+    jwt.verify(req.cookies.jwt, SECRET, (err, decoded) => {
+      if(decoded){
+	var attribs = [];
+      	let sqlQuery;
+	sqlQuery = "SELECT * FROM market_users WHERE email=?";
+      	pool.query(sqlQuery, 
+      	decoded.username, 
+      	function(err, result, fields){
+		for(i in result[0]){
+		    attribs[i] = result[0][i];
+		}
+      		sqlQuery = "SELECT * FROM market_product p, market_inventory i WHERE p.productID = i.productID AND marketID=?";
+		pool.query(sqlQuery, 
+	      	result[0].marketID,
+	      	function(err2, result2, fields2){
+	 	  attribs["products"] = [];
+		  for(var i in result2){
+			if(result2[i].product == 'Baked Goods')
+			  attribs["BakedGoods"] = "BakedGoods";
+			attribs[result2[i].product] = result2[i].product;  //result2[i].product);
+		  }
+	  	  //console.log(attribs);
+      		 // attribs = { name: "Matthew" };
+      		  res.render("editMarketInfo", attribs); //JSON.stringify(attribs));
+	       });
+	  
+      });
+      }	
+   });
+});
+
+app.post('/editMarketInfo', function(req, res) {
+    console.log(req.body);
+
+   jwt.verify(req.cookies.jwt, SECRET, (err, decoded) => {
+   if(decoded){
+   
+	      var toReturn = {"isErrored": false};
+  	 res.status(400);
+   	if(req.body != null) {
+
+   	//Validate the market name	
+   	if(req.body.marketName == null || req.body.marketName == ""){
+      		toReturn.isErrored = true;
+    	  	toReturn.marketName = "No Name";
+   	}
+   	else if(req.body.marketName.length > 255) {
+       		toReturn.isErrored = true;
+       		toReturn.marketName = "Name too long";	 
+	}
+ 
+
+   //Validate the phone number	
+   if(req.body.phone == null || req.body.phone == ""){
+      toReturn.isErrored = true;
+      toReturn.phone = "No phone";
+   }	
+   else if(req.body.phone.length > 255){
+       toReturn.isErrored = "true";
+       toReturn.phone = "Invalid phone number";	
+   }	
+
+   //Validate the contact
+   if(req.body.contact == null || req.body.contact == ""){
+      toReturn.isErrored = true;
+      toReturn.contact = "No contact";
+   }	
+   else if(req.body.contact.length > 255){
+       toReturn.isErrored = "true";
+       toReturn.contact = "Invalid contact";	
+   }
+	
+   //Validate address
+   if(req.body.address == null || req.body.address == ""){
+      toReturn.isErrored = true;
+      toReturn.address = "No address";
+   }	
+   else if(req.body.address.length > 255){
+       toReturn.isErrored = "true";
+       toReturn.address = "Invalid address";	
+   }	
+   
+   //Validate the city
+   if(req.body.city == null || req.body.city == ""){
+      toReturn.isErrored = true;
+      toReturn.city = "No city";
+   }	
+   else if(req.body.city.length > 255){
+       toReturn.isErrored = "true";
+       toReturn.city = "Invalid city";	
+   }
+
+   //Validate the state
+   if(req.body.state == null || req.body.state == ""){
+      toReturn.isErrored = true;
+      toReturn.state = "No state";
+   }	
+   else if(req.body.state.length > 2){
+       toReturn.isErrored = "true";
+       toReturn.state = "Use state abbreviation.";	
+   }
+   //Validate the zip
+   if(req.body.zip == null || req.body.zip == ""){
+      toReturn.isErrored = true;
+      toReturn.zip = "No zip";
+   }	
+   else if(req.body.zip.length > 255){
+       toReturn.isErrored = "true";
+       toReturn.zip = "Invalid zip";	
+   }
+
+   if(toReturn.marketName == null){
+       pool.query("SELECT * FROM market_users m WHERE m.email=?", decoded.username, function(err, result){
+       if(err != null){
+          console.log(err);
+       }
+       else if(!result){
+          toReturn.isErrored = true;
+	  toReturn.marketName = "We had a db meltdown";
+	  res.send(JSON.stringify(toReturn));    
+       }
+       else{
+         if(toReturn.isErrored == false){
+           res.status(200);
+          if(err != null)
+          {
+            LogMsg(err, LOG_TYPE.ERROR);
+          }	
+          pool.query("UPDATE market_users SET name=?, phone=?, contact=?, address=?, city=?, state=?, zip=? WHERE email=?", [ req.body.marketName, req.body.phone, req.body.contact, req.body.address, req.body.city, req.body.state, req.body.zip, decoded.username ], function(err5, result5){
+                        if(err5 != null) {
+				console.log("I got here");
+				LogMsg(err5, LOG_TYPE.ERROR);
+			}
+			pool.query("Delete FROM market_inventory WHERE marketID=?", result[0].marketID, function(err3, result3){
+		     if(err3 != null){
+			LogMsg(err3, LOG_TYPE.ERROR);
+		     }
+				console.log(result3);
+			});
+			 var prods = "";
+			 if(req.body.meat == 'true') prods+=        ", 'Meat'";
+			 if(req.body.vegetables == 'true') prods+=  ", 'Vegetables'";
+			 if(req.body.fruit == 'true') prods+=       ", 'Fruit'";
+			 if(req.body.dairy == 'true') prods+=       ", 'Dairy'";
+			 if(req.body.eggs == 'true') prods+=        ", 'Eggs'";
+			 if(req.body.bakedgoods == 'true') prods+=   ", 'Baked Goods'";
+			 if(req.body.other == 'true') prods+=       ", 'Other'";
+			 if(prods.length > 0) {
+	                     prods = prods.substr(1);			
+	         	     pool.query("SELECT * FROM market_product P WHERE P.product IN (" + prods + ")", function(err2, result2){
+				     
+					     for(var i in result2){
+				     pool.query("INSERT INTO market_inventory (marketID, productID) VALUES (?, ?)", [ result[0].marketID, result2[i].productID ], function(err4, result4){
+					     	if(err4 != null) LogMsg(err4, LOG_TYPE.ERROR);
+						});
+				  }
+			     
+			 });
+			 }
+                                       
+			 
+		});       
+	      
+	 }
+       }           
+     });
+}
+   }
+  }
+ });
+  res.render("home");
+});
+
+
 
 
 
