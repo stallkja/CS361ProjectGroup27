@@ -147,3 +147,41 @@ function newMarket()
    );
 
 }
+
+
+function SaveMarketInfo()
+{
+   const name = document.getElementById('name').value;
+   const email = document.getElementById('email').value;
+   const phone = document.getElementById('phone').value;
+   const contact = document.getElementById('contact').value;
+   const address = document.getElementById('address').value;
+   const city = document.getElementById('city').value;
+   const state = document.getElementById('state').value;
+   const zip = document.getElementById('zip').value;
+   const meat = document.getElementById('Meat').checked;
+   const vegetables = document.getElementById('Vegetables').checked;   
+   const fruit = document.getElementById('Fruit').checked;   
+   const dairy = document.getElementById('Dairy').checked;   
+   const eggs = document.getElementById('Eggs').checked;   
+   const bakedgoods = document.getElementById('Baked Goods').checked;   
+   const other = document.getElementById('Other').checked;   
+   
+   let req = new XMLHttpRequest();
+
+   req.open('POST', 'editMarketInfo', true);
+   req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+   req.addEventListener('load',function(){
+      if(req.status >= 200 && req.status < 400){
+	    alert("Success! Your info has been updated.");
+	    window.location.href = "/marketHome";
+      } else {
+	 alert(req.response);
+         console.log('Error');
+   }});
+
+   req.send(
+      "marketName=" + name + "&email=" + email + "&phone=" + phone + "&contact=" + contact + "&address=" + address + "&city=" + city + "&state=" + state + "&zip=" + zip + "&meat=" + meat + "&vegetables=" + vegetables + "&fruit=" + fruit + "&dairy=" + dairy + "&eggs=" + eggs + "&bakedgoods=" + bakedgoods + "&other=" + other
+   );
+
+}
